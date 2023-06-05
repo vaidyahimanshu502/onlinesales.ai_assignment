@@ -1,0 +1,358 @@
+Output (Report)
+Fetch top 3 departments along with their name and average monthly salary. Below is the format of the report.
+
+DEPT_NAME
+AVG_MONTHLY_SALARY (USD)
+
+
+Task-1 SQL
+In the attachment above, use each worksheet as a table in a relational database and write an SQL query that generates the output report
+
+Enter password: ***********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 19
+Server version: 8.0.32 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use employee_info;
+Database changed
+mysql> select * from emp_data;
++--------+--------+---------+
+| EMP_ID | MONTH  | AMT     |
++--------+--------+---------+
+|      1 | 202207 | 5000.00 |
+|      2 | 202207 | 4000.00 |
+|      3 | 202207 | 8000.00 |
+|      4 | 202207 | 4000.00 |
+|      5 | 202207 | 5500.00 |
+|      6 | 202207 | 4500.00 |
+|      7 | 202207 | 6500.00 |
+|      8 | 202207 | 5800.00 |
+|      9 | 202207 | 5500.00 |
+|     10 | 202207 | 4800.00 |
+|     11 | 202207 | 6000.00 |
+|      1 | 202208 | 5000.00 |
+|      2 | 202208 | 4000.00 |
+|      3 | 202208 | 8000.00 |
+|      4 | 202208 | 7000.00 |
+|      5 | 202208 | 5500.00 |
+|      6 | 202208 | 4500.00 |
+|      7 | 202208 | 6500.00 |
+|      8 | 202208 | 5800.00 |
+|      9 | 202208 | 5500.00 |
+|     10 | 202208 | 4800.00 |
+|     11 | 202208 | 6000.00 |
+|     12 | 202208 | 5200.00 |
+|      3 | 202209 | 8000.00 |
+|      4 | 202209 | 7000.00 |
+|      5 | 202209 | 5500.00 |
+|      6 | 202209 | 4500.00 |
+|      7 | 202209 | 6500.00 |
+|      8 | 202209 | 5800.00 |
+|      9 | 202209 | 5500.00 |
+|     10 | 202209 | 4800.00 |
+|     11 | 202209 | 6000.00 |
+|     12 | 202209 | 5200.00 |
+|      3 | 202210 | 8000.00 |
+|      4 | 202210 | 7000.00 |
+|      5 | 202210 | 5500.00 |
+|      6 | 202210 | 4500.00 |
+|      7 | 202210 | 6500.00 |
+|      8 | 202210 | 5800.00 |
+|      9 | 202210 | 5500.00 |
+|     10 | 202210 | 4800.00 |
+|     11 | 202210 | 6000.00 |
+|     12 | 202210 | 5200.00 |
+|     13 | 202210 | 7500.00 |
+|      3 | 202211 | 8000.00 |
+|      4 | 202211 | 7000.00 |
+|      5 | 202211 | 5500.00 |
+|      6 | 202211 | 4500.00 |
+|      7 | 202211 | 6500.00 |
+|      8 | 202211 | 5800.00 |
+|      9 | 202211 | 5500.00 |
+|     10 | 202211 | 4800.00 |
+|     11 | 202211 | 6000.00 |
+|     12 | 202211 | 5200.00 |
+|     13 | 202211 | 7500.00 |
+|     14 | 202211 | 7500.00 |
+|     15 | 202211 | 7500.00 |
+|     16 | 202211 | 7500.00 |
+|     17 | 202211 | 7500.00 |
+|      3 | 202212 | 8000.00 |
+|      4 | 202212 | 7000.00 |
+|      5 | 202212 | 5500.00 |
+|      6 | 202212 | 4500.00 |
+|      7 | 202212 | 6500.00 |
+|      8 | 202212 | 5800.00 |
+|      9 | 202212 | 5500.00 |
+|     10 | 202212 | 4800.00 |
+|     11 | 202212 | 6000.00 |
+|     12 | 202212 | 5200.00 |
+|     13 | 202212 | 7500.00 |
+|     14 | 202212 | 7500.00 |
+|     15 | 202212 | 7500.00 |
+|     16 | 202212 | 7500.00 |
+|     17 | 202212 | 7500.00 |
+|      3 | 202301 | 8000.00 |
+|      4 | 202301 | 7000.00 |
+|      5 | 202301 | 6500.00 |
+|      6 | 202301 | 4500.00 |
+|      7 | 202301 | 6500.00 |
+|      8 | 202301 | 5800.00 |
+|      9 | 202301 | 5500.00 |
+|     10 | 202301 | 4800.00 |
+|     11 | 202301 | 6000.00 |
+|     12 | 202301 | 5200.00 |
+|     13 | 202301 | 7500.00 |
+|     14 | 202301 | 7500.00 |
+|     15 | 202301 | 7500.00 |
+|     16 | 202301 | 7500.00 |
+|     17 | 202301 | 7500.00 |
+|      5 | 202302 | 6500.00 |
+|      6 | 202302 | 4500.00 |
+|      7 | 202302 | 6500.00 |
+|      8 | 202302 | 5800.00 |
+|      9 | 202302 | 5500.00 |
+|     10 | 202302 | 4800.00 |
+|     11 | 202302 | 6000.00 |
+|     12 | 202302 | 7200.00 |
+|     13 | 202302 | 7500.00 |
+|     14 | 202302 | 7500.00 |
+|     15 | 202302 | 7500.00 |
+|     16 | 202302 | 7500.00 |
+|     17 | 202302 | 7500.00 |
+|     18 | 202302 | 5700.00 |
+|      5 | 202303 | 6500.00 |
+|      6 | 202303 | 4500.00 |
+|      7 | 202303 | 6500.00 |
+|      8 | 202303 | 5800.00 |
+|      9 | 202303 | 5500.00 |
+|     10 | 202303 | 4800.00 |
+|     11 | 202303 | 6000.00 |
+|     12 | 202303 | 7200.00 |
+|     13 | 202303 | 7500.00 |
+|     14 | 202303 | 7500.00 |
+|     15 | 202303 | 7500.00 |
+|     16 | 202303 | 7500.00 |
+|     17 | 202303 | 7500.00 |
+|     18 | 202303 | 5700.00 |
+|      7 | 202304 | 8500.00 |
+|      8 | 202304 | 6500.00 |
+|      9 | 202304 | 5500.00 |
+|     10 | 202304 | 5500.00 |
+|     11 | 202304 | 6000.00 |
+|     12 | 202304 | 7200.00 |
+|     13 | 202304 | 7500.00 |
+|     14 | 202304 | 7500.00 |
+|     15 | 202304 | 7500.00 |
+|     16 | 202304 | 7500.00 |
+|     17 | 202304 | 7500.00 |
+|     18 | 202304 | 5700.00 |
+|     19 | 202304 | 6200.00 |
+|     20 | 202304 | 5500.00 |
+|     21 | 202304 | 4800.00 |
+|     22 | 202304 | 5800.00 |
+|     23 | 202304 | 4500.00 |
+|     24 | 202304 | 7500.00 |
+|      7 | 202305 | 8500.00 |
+|      8 | 202305 | 6500.00 |
+|      9 | 202305 | 5500.00 |
+|     10 | 202305 | 5500.00 |
+|     11 | 202305 | 6000.00 |
+|     12 | 202305 | 7200.00 |
+|     13 | 202305 | 7500.00 |
+|     14 | 202305 | 7500.00 |
+|     15 | 202305 | 7500.00 |
+|     16 | 202305 | 7500.00 |
+|     17 | 202305 | 7500.00 |
+|     18 | 202305 | 5700.00 |
+|     19 | 202305 | 6200.00 |
+|     20 | 202305 | 5500.00 |
+|     21 | 202305 | 4800.00 |
+|     22 | 202305 | 5800.00 |
+|     23 | 202305 | 4500.00 |
+|     24 | 202305 | 7500.00 |
+|      7 | 202306 | 8500.00 |
+|      8 | 202306 | 6500.00 |
+|      9 | 202306 | 5500.00 |
+|     10 | 202306 | 5500.00 |
+|     11 | 202306 | 6000.00 |
+|     12 | 202306 | 7200.00 |
+|     13 | 202306 | 7500.00 |
+|     14 | 202306 | 7500.00 |
+|     15 | 202306 | 7500.00 |
+|     16 | 202306 | 7500.00 |
+|     17 | 202306 | 7500.00 |
+|     18 | 202306 | 5700.00 |
+|     19 | 202306 | 6200.00 |
+|     20 | 202306 | 5500.00 |
+|     21 | 202306 | 4800.00 |
+|     22 | 202306 | 5800.00 |
+|     23 | 202306 | 4500.00 |
+|     24 | 202306 | 7500.00 |
++--------+--------+---------+
+171 rows in set (0.00 sec)
+
+mysql> select * from department;
++------+---------+
+| ID   | NAME    |
++------+---------+
+|    1 | HR      |
+|    2 | Finance |
+|    3 | IT      |
+|    4 | Ops     |
+|    5 | Sales   |
++------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employees;
++------+-----------+---------+
+| ID   | NAME      | DEPT_ID |
++------+-----------+---------+
+|    1 | Jack      |       1 |
+|    2 | John      |       1 |
+|    3 | Jim       |       2 |
+|    4 | Harry     |       3 |
+|    5 | Ben       |       2 |
+|    6 | Elizabeth |       4 |
+|    7 | Mary      |       5 |
+|    8 | Cameron   |       2 |
+|    9 | Anthony   |       3 |
+|   10 | Shirley   |       1 |
+|   11 | Tom       |       2 |
+|   12 | Catherine |       3 |
+|   13 | Patrick   |       2 |
+|   14 | Olivia    |       4 |
+|   15 | Emma      |       5 |
+|   16 | Howard    |       5 |
+|   17 | Caronline |       4 |
+|   18 | Anna      |       2 |
+|   19 | Mike      |       2 |
+|   20 | Chris     |       2 |
+|   21 | Bruce     |       5 |
+|   24 | Pete      |       1 |
+|   22 | Maggie    |       2 |
+|   23 | Paul      |       3 |
++------+-----------+---------+
+24 rows in set (0.00 sec)
+
+mysql> SELECT d.name AS DEPT_NAME, AVG(ei.amt) AS AVG_MONTHLY_SALARY
+    -> FROM department d
+    -> JOIN employees e ON d.id = e.dept_id
+    -> JOIN emp_data ei ON e.id = ei.emp_id
+    -> GROUP BY d.id, d.name
+    -> ORDER BY AVG_MONTHLY_SALARY DESC
+    -> LIMIT 3;
++-----------+--------------------+
+| DEPT_NAME | AVG_MONTHLY_SALARY |
++-----------+--------------------+
+| Sales     |        7045.161290 |
+| Ops       |        6420.000000 |
+| Finance   |        6360.317460 |
++-----------+--------------------+
+3 rows in set (0.00 sec)
+
+Task-2 Scripting
+With the same attachment, use each worksheet as a CSV file and write a script (Bash or Python) that generates the same report. Data is to be read from the CSV files not from a database.
+
+
+def generate_report():
+    departments = {}
+    
+    # Read employee data from CSV
+    with open('employee.csv', 'r') as file:
+        reader = csv.reader(file)
+        next(reader)  # Skip header row
+        for row in reader:
+            emp_id = int(row[0])
+            dept_id = int(row[2])
+            if dept_id not in departments:
+                departments[dept_id] = []
+            departments[dept_id].append(emp_id)
+
+    # Read department data from CSV
+    with open('department.csv', 'r') as file:
+        reader = csv.reader(file)
+        next(reader)  # Skip header row
+        for row in reader:
+            dept_id = int(row[0])
+            dept_name = row[1]
+            if dept_id in departments:
+                departments[dept_id].append(dept_name)
+
+    # Calculate average salary for each department from employee_info CSV
+    with open('employee_info.csv', 'r') as file:
+        reader = csv.reader(file)
+        next(reader)  # Skip header row
+        for row in reader:
+            emp_id = int(row[0])
+            month = int(row[1])
+            salary = int(row[2])
+            if emp_id in departments:
+                departments[emp_id].append(salary)
+
+    # Generate report
+    print("DEPT_NAME")
+    print("AVG_MONTHLY_SALARY (USD)")
+    print()
+    for dept_id, data in departments.items():
+        dept_name = data[1]
+        salaries = data[2:]
+        average_salary = sum(salaries) / len(salaries)
+        print(dept_name)
+        print(average_salary)
+        print()
+
+generate_report()
+
+Task-3 Debugging
+Given below is a Bash / Python script that performs following computation on an integer input (n):
+If n is less than 10: Calculate its Square
+Example: 4 => 16
+If n is between 10 and 20: Calculate the factorial of (n-10)
+Example: 15 => 120
+If n is greater than 20: Calculate the sum of all integers between 1 and (n-20)
+Example: 25 => 15
+
+The task is to identify the bugs in the script, fix them and share the new script. Only one of the two scripts required Bash or Python. Hint: You can correct the script by only changing 3-4 characters.
+
+BUGGED CODE
+def compute(n):
+    if n < 10:
+        out = n ** 2
+    elif n < 20:
+        out = 1
+        for i in range(1, n-10):
+            out *= i
+    else:
+        lim = n - 20
+        out = lim * lim
+        out = out - lim
+        out = out / 2 
+    print(out)
+DEBUGGED CODE
+def compute(n):
+    if n < 10:
+        out = n ** 2
+    elif n < 20:
+        out = 1
+        for i in range(1, n-9):
+            out *= i
+    else:
+        lim = n - 20
+        out = 0
+        for j in range(1, lim+1):
+            out += j
+    print(out)
+
+
+n = int(input("Enter an integer: "))
+compute(n)
