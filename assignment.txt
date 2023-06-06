@@ -313,6 +313,18 @@ def generate_report():
 
 generate_report()
 
+To run the Python script for generating the report from the CSV files, follow these instructions:
+                                                            -> Copy the entire code snippet provided.
+                                                            -> Open a Python integrated development environment (IDE) or a text editor of your choice.
+                                                            ->Create a new Python file and paste the copied code into the file.
+                                                            ->Save the file with a .py extension, such as generate_report.py, in a directory of your choice.
+                                                            ->Place the CSV files (worksheet1.csv, worksheet2.csv, etc.) in the same directory as the Python file.
+                                                            ->Open a terminal or command prompt.
+                                                            ->Navigate to the directory where you saved the Python file and the CSV files using the cd command (e.g.,                                                                cd path/to/directory).
+                                                            -> Once you are in the correct directory, execute the following command to run the script:
+                                                                                                                        python generate_report.py
+                                                             
+
 Task-3 Debugging
 Given below is a Bash / Python script that performs following computation on an integer input (n):
 If n is less than 10: Calculate its Square
@@ -352,7 +364,50 @@ def compute(n):
         for j in range(1, lim+1):
             out += j
     print(out)
-
-
 n = int(input("Enter an integer: "))
 compute(n)
+
+ We have to handle following test cases properly
+    a. if n = 5 
+    b. if n = 15 expected output = 6
+    c. if n = 10 expected output = 1
+    d. if n = 20 expected output = 0
+    e. if n = -5 expected output = 25
+    f. if n = 0 expected output = 0
+The code assumes that the input n will always be an integer. It does not account for non-integer or invalid inputs.
+LOGIC-
+      If n is less than 10, calculate the square of n
+      If n is between 10 and 20, calculate the factorial of n-9
+      If n is 20 or greater, calculate the sum of numbers from 1 to n-20
+      Print the final result
+      Take input from the user
+      Call the function with the entered integer.
+      
+To run the code snippet, follow these instructions:
+                  Copy the entire code snippet provided.
+                  Open a Python integrated development environment (IDE) or a text editor of your choice.
+                  Create a new Python file and paste the copied code into the file.
+                  Save the file with a .py extension, such as compute.py, in a directory of your choice.
+                  Open a terminal or command prompt.
+                  Navigate to the directory where you saved the Python file using the cd command (e.g., cd path/to/directory).
+                  Once you are in the correct directory, enter the following command to run the code:
+                                                                                                   python compute.py
+                  The program will prompt you to enter an integer. Type the desired integer value and press Enter.
+                  The code will execute and print the output corresponding to the entered integer value.
+                  Repeat the process to test the code with different input values.
+For debugging i have tested the following test cases
+         Test case for n less than 10:
+                       Input: n = 5
+                       Expected output: 25
+         Test case for n between 10 and 20:
+                        Input: n = 15
+                        Expected output: 120
+         Test case for n equal to 10:
+                         Input: n = 10
+                         Expected output: 1
+         Test case for n equal to 20:
+                        Input: n = 20
+                        Expected output: 0
+        Test case for n greater than 20:
+                         Input: n = 25
+                         Expected output: 15
