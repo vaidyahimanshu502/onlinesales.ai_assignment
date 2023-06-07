@@ -264,66 +264,94 @@ Task-2 Scripting
 With the same attachment, use each worksheet as a CSV file and write a script (Bash or Python) that generates the same report. Data is to be read from the CSV files not from a database.
 
 
-def generate_report():
-    departments = {}
-    
-    # Read employee data from CSV
-    with open('employee.csv', 'r') as file:
-        reader = csv.reader(file)
-        next(reader)  # Skip header row
-        for row in reader:
-            emp_id = int(row[0])
-            dept_id = int(row[2])
-            if dept_id not in departments:
-                departments[dept_id] = []
-            departments[dept_id].append(emp_id)
+const fs = require('fs');
+const csv = require('csv-parser');
 
-    # Read department data from CSV
-    with open('department.csv', 'r') as file:
-        reader = csv.reader(file)
-        next(reader)  # Skip header row
-        for row in reader:
-            dept_id = int(row[0])
-            dept_name = row[1]
-            if dept_id in departments:
-                departments[dept_id].append(dept_name)
+// Function to read the CSV file and return a Promise with the data
+function readCSV(filePath) {
+  return new Promise((resolve, reject) => {
+    const results = [];
+    fs.createReadStream(filePath)
+      .pipe(csv())
+      .on('data', (data) => results.push(data))
+      .on('end', () => resolve(results))
+      .on('error', (error) => reject(error));
+  });
+}
 
-    # Calculate average salary for each department from employee_info CSV
-    with open('employee_info.csv', 'r') as file:
-        reader = csv.reader(file)
-        next(reader)  # Skip header row
-        for row in reader:
-            emp_id = int(row[0])
-            month = int(row[1])
-            salary = int(row[2])
-            if emp_id in departments:
-                departments[emp_id].append(salary)
+// Function to calculate the average monthly salary for each department
+function calculateAverageSalary(data) {
+  const departments = {};
+  data.forEach((row) => {
+    const department = row.DEPT_NAME;
+    const salary = parseFloat(row.MONTHLY_SALARY);
+    if (!departments[department]) {
+      departments[department] = {
+        totalSalary: 0,
+        count: 0,
+      };
+    }
+    departments[department].totalSalary += salary;
+    departments[department].count++;
+  });
 
-    # Generate report
-    print("DEPT_NAME")
-    print("AVG_MONTHLY_SALARY (USD)")
-    print()
-    for dept_id, data in departments.items():
-        dept_name = data[1]
-        salaries = data[2:]
-        average_salary = sum(salaries) / len(salaries)
-        print(dept_name)
-        print(average_salary)
-        print()
+  const departmentAverages = [];
+  for (const department in departments) {
+    const avgSalary = departments[department].totalSalary / departments[department].count;
+    departmentAverages.push({
+      DEPT_NAME: department,
+      AVG_MONTHLY_SALARY: avgSalary.toFixed(2),
+    });
+  }
 
-generate_report()
+  return departmentAverages;
+}
 
-To run the Python script for generating the report from the CSV files, follow these instructions:
-                                                            -> Copy the entire code snippet provided.
-                                                            -> Open a Python integrated development environment (IDE) or a text editor of your choice.
-                                                            ->Create a new Python file and paste the copied code into the file.
-                                                            ->Save the file with a .py extension, such as generate_report.py, in a directory of your choice.
-                                                            ->Place the CSV files (worksheet1.csv, worksheet2.csv, etc.) in the same directory as the Python file.
-                                                            ->Open a terminal or command prompt.
-                                                            ->Navigate to the directory where you saved the Python file and the CSV files using the cd command (e.g.,                                                                cd path/to/directory).
-                                                            -> Once you are in the correct directory, execute the following command to run the script:
-                                                                                                                        python generate_report.py
-                                                             
+// Function to sort the department averages by average monthly salary
+function sortDepartmentAverages(departmentAverages) {
+  return departmentAverages.sort((a, b) => b.AVG_MONTHLY_SALARY - a.AVG_MONTHLY_SALARY);
+}
+
+// Function to fetch the top 3 departments with their average monthly salaries
+function fetchTopDepartments(departmentAverages) {
+  return departmentAverages.slice(0, 3);
+}
+
+// Main function
+async function generateReport() {
+  try {
+    const filePath = 'path/to/csv/file.csv'; // Replace with the actual path to your CSV file
+
+    const data = await readCSV(filePath);
+    const departmentAverages = calculateAverageSalary(data);
+    const sortedDepartmentAverages = sortDepartmentAverages(departmentAverages);
+    const topDepartments = fetchTopDepartments(sortedDepartmentAverages);
+
+    console.log('DEPT_NAME');
+    console.log('AVG_MONTHLY_SALARY (USD)');
+    topDepartments.forEach((department) => {
+      console.log(department.DEPT_NAME);
+      console.log(department.AVG_MONTHLY_SALARY);
+      console.log();
+    });
+  } catch (error) {
+    console.error('An error occurred:', error);
+  }
+}
+
+// Call the main function
+generateReport();
+
+To run the Node.js script, follow these instructions:
+
+Install Node.js
+Install dependencies: Open a terminal or command prompt and navigate to the directory where you have saved the script. Run the following command to install the required dependencies:
+npm install fs csv-parser
+Update the file path: Open the script file in a text editor and replace 'path/to/csv/file.csv' with the actual path to your CSV file. Make sure to provide the correct file path.
+Save the changes to the script file.
+Run the script: Open a terminal or command prompt, navigate to the directory where the script is located, and run the following command:
+node script.js
+
 
 Task-3 Debugging
 Given below is a Bash / Python script that performs following computation on an integer input (n):
